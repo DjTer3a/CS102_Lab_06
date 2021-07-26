@@ -1,8 +1,22 @@
+/**
+ * Lab_06 Instructions found on moodle
+ * 
+ * Style guidlines URL:-
+ * http://www.cs.bilkent.edu.tr/~adayanik/cs101/practicalwork/styleguidelines.htm
+ * 
+ * 
+ * @author Mostafa Higazy
+ * @version 26/07/2021
+ */
+
+
 import java.util.*;
 import java.io.*;
 
 public class Lab_06 {
 
+
+    //counts the string length
     public static int stringLength(String string){
         if(string.equals("")){
             return 0;
@@ -12,6 +26,8 @@ public class Lab_06 {
         }
     }
 
+
+    //counts non vowels and returns the value as int
     public static int countNonVowels(String string){
         int length = 0;
         if(string.contains("a") || string.contains("e")  || string.contains("o") || string.contains("u")  || string.contains("i")  ){    
@@ -32,6 +48,8 @@ public class Lab_06 {
         }
     }
 
+
+    //method to create a binary number
     public static void createBinary(int start,  int size, char[] ch){
         if(start == size){
             System.out.println(toString(ch)+" ");
@@ -52,6 +70,7 @@ public class Lab_06 {
         }
     }
 
+    //method to get all the binary numbers using an array
     public static void allBinary(int start){
         if(start <=0){
             return;
@@ -67,6 +86,7 @@ public class Lab_06 {
 
     }
 
+    //toString representation of the binary numbers
     public static String toString(char[] ch){
         String string = new String(ch);
         return string;
@@ -74,6 +94,8 @@ public class Lab_06 {
 
     private static long counter = 0;
 
+
+    //counts and returns the files in a directory
     public static void fileCounter(File[] files, int start, int deeper){
         
         if(start == files.length){
@@ -90,6 +112,7 @@ public class Lab_06 {
     }
     
 
+    //main method to test the program
     public static void main(String[] args){
 
         String string = "CS102 is the best";
@@ -103,18 +126,12 @@ public class Lab_06 {
         int num = 4;
         allBinary(num);
 
-        
         String path = "C:\\Users\\djter\\Desktop\\cs102 summer";
         File file = new File(path);
         System.out.println();
         if(file.exists() && file.isDirectory()){
             File[] files = file.listFiles();
-
             fileCounter(files, 0, 0);
         }
-
-
     }
-
-
 }
