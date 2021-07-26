@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Lab_06 {
 
@@ -38,9 +39,9 @@ public class Lab_06 {
         }
 
         if(ch[size-1] == '0'){
-            ch[size] = '0';
-            createBinary(start, size+1, ch);
             ch[size] = '1';
+            createBinary(start, size+1, ch);
+            ch[size] = '0';
             createBinary(start, size+1, ch);
         }
 
@@ -58,10 +59,10 @@ public class Lab_06 {
 
         char[] ch = new char[start];
 
-        ch[0] = '0';
+        ch[0] = '1';
         createBinary(start, 1, ch);
 
-        ch[0] = '1';
+        ch[0] = '0';
         createBinary(start, 1, ch);
 
     }
@@ -70,6 +71,24 @@ public class Lab_06 {
         String string = new String(ch);
         return string;
     }
+
+    private static long counter = 0;
+
+    public static void fileCounter(File[] files, int start, int deeper){
+        
+        if(start == files.length){
+            System.out.println(counter);
+            return ;
+        }
+        if(files[start].isFile()){
+            counter++;
+        }
+        else if(files[start].isDirectory()){
+            fileCounter(files[start].listFiles(), 0, deeper+1);
+        }
+        fileCounter(files, ++start, deeper);
+    }
+    
 
     public static void main(String[] args){
 
@@ -83,6 +102,17 @@ public class Lab_06 {
 
         int num = 4;
         allBinary(num);
+
+        
+        String path = "C:\\Users\\djter\\Desktop\\cs102 summer";
+        File file = new File(path);
+        System.out.println();
+        if(file.exists() && file.isDirectory()){
+            File[] files = file.listFiles();
+
+            fileCounter(files, 0, 0);
+        }
+
 
     }
 
